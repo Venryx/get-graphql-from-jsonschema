@@ -9,7 +9,7 @@ get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.
 ## Installation
 
 ```shell
-$ npm install @venryx/get-graphql-from-jsonschema
+$ npm install @vforks/get-graphql-from-jsonschema
 ```
 
 ## Quick Start
