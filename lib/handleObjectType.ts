@@ -3,10 +3,11 @@ import { parseSchema } from './parseSchema';
 import { toPascalCase } from './toPascalCase';
 import { TranslatableObjectTypeJsonSchema } from './Types/TranslatableObjectTypeJsonSchema';
 
-const handleObjectType = function ({ path, schema, direction }: {
+const handleObjectType = function ({ path, schema, direction, refToTypeName }: {
   path: string[];
   schema: TranslatableObjectTypeJsonSchema;
   direction: Direction;
+  refToTypeName?: (refName: string) => string;
 }): { typeName: string; typeDefinitions: string[] } {
   const graphqlTypeName = toPascalCase(path);
   const graphqlTypeDefinitions: string[] = [];
@@ -24,7 +25,8 @@ const handleObjectType = function ({ path, schema, direction }: {
     } = parseSchema({
       path: [ ...path, propertyName ],
       schema: propertySchema,
-      direction
+      direction,
+      refToTypeName
     });
 
     let line = `  ${propertyName}: ${propertyGraphqlTypeName}`;

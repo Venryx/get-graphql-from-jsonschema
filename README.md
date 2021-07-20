@@ -3,7 +3,8 @@
 get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.
 
 > Fork modifications:
-> * Added support for json-schema enums.
+> * Added support for "enum" field in schemas.
+> * Added support for "$ref" field in schemas.
 > * Made-so if schema structure isn't recognized, the invalid schema is included in the log message.
 
 ## Installation

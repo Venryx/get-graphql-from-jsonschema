@@ -3,10 +3,11 @@ import { parseSchema } from './parseSchema';
 import { TranslatableTypeJsonSchema } from './Types/TranslateableTypeJsonSchema';
 import { TranslatableUnionJsonSchema } from './Types/TranslatableUnionJsonSchema';
 
-const parseUnion = function ({ path, schema, direction }: {
+const parseUnion = function ({ path, schema, direction, refToTypeName }: {
   path: string[];
   schema: TranslatableUnionJsonSchema;
   direction: Direction;
+  refToTypeName?: (refName: string) => string;
 }): { typeName: string; typeDefinitions: string[] } {
   let subSchemas: TranslatableTypeJsonSchema[];
 
@@ -20,7 +21,7 @@ const parseUnion = function ({ path, schema, direction }: {
         graphqlTypeNames: string[] = [];
 
   subSchemas.forEach((subSchema, index): void => {
-    const result = parseSchema({ schema: subSchema, direction, path: [ ...path, `I${index}` ]});
+    const result = parseSchema({ schema: subSchema, direction, path: [ ...path, `I${index}` ], refToTypeName });
 
     graphqlTypeNames.push(result.typeName);
     graphqlTypeDefinitions.push(...result.typeDefinitions);

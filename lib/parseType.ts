@@ -6,10 +6,11 @@ import { hasArrayType } from './hasArrayType';
 import { hasObjectType } from './hasObjectType';
 import { TranslatableTypeJsonSchema } from './Types/TranslateableTypeJsonSchema';
 
-const parseType = function ({ path, schema, direction }: {
+const parseType = function ({ path, schema, direction, refToTypeName }: {
   path: string[];
   schema: TranslatableTypeJsonSchema;
   direction: Direction;
+  refToTypeName?: (refName: string) => string;
 }): { typeName: string; typeDefinitions: string[] } {
   const graphqlTypeNames: string[] = [];
   const graphqlTypeDefinitions: string[] = [];
@@ -17,10 +18,10 @@ const parseType = function ({ path, schema, direction }: {
   const subPath = [ ...path, `T${0}` ];
 
   if (hasArrayType(schema)) {
-    return handleArrayType({ path: subPath, schema, direction });
+    return handleArrayType({ path: subPath, schema, direction, refToTypeName });
   }
   if (hasObjectType(schema)) {
-    return handleObjectType({ path: subPath, schema, direction });
+    return handleObjectType({ path: subPath, schema, direction, refToTypeName });
   }
 
   if (!Array.isArray(schema.type)) {
