@@ -2,20 +2,14 @@
 
 get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.
 
-## Status
-
-| Category         | Status                                                                                                                        |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------- |
-| Version          | [![npm](https://img.shields.io/npm/v/get-graphql-from-jsonschema)](https://www.npmjs.com/package/get-graphql-from-jsonschema) |
-| Dependencies     | ![David](https://img.shields.io/david/thenativeweb/get-graphql-from-jsonschema)                                               |
-| Dev dependencies | ![David](https://img.shields.io/david/dev/thenativeweb/get-graphql-from-jsonschema)                                           |
-| Build            | ![GitHub Actions](https://github.com/thenativeweb/get-graphql-from-jsonschema/workflows/Release/badge.svg?branch=main)      |
-| License          | ![GitHub](https://img.shields.io/github/license/thenativeweb/get-graphql-from-jsonschema)                                     |
+> Fork modifications:
+> * Added support for json-schema enums.
+> * Made-so if schema structure isn't recognized, the invalid schema is included in the log message.
 
 ## Installation
 
 ```shell
-$ npm install get-graphql-from-jsonschema
+$ npm install @venryx/get-graphql-from-jsonschema
 ```
 
 ## Quick Start
