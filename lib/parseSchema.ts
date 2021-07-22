@@ -15,7 +15,12 @@ const parseSchema = function ({ path, schema, direction, refToTypeName }: {
 }): { typeName: string; typeDefinitions: string[] } {
   let result: { typeName: string; typeDefinitions: string[] };
 
-  if ('$ref' in schema as any) {
+  if ('$gqlType' in schema as any) {
+    result = {
+      typeName: (schema as any).gqlType,
+      typeDefinitions: []
+    };
+  } else if ('$ref' in schema as any) {
     if (refToTypeName === undefined) {
       throw new Error(`A $ref was found in the schema at path ${toBreadcrumb([ ...path, '$ref' ])}, but no refToTypeName function was provided.`);
     }
