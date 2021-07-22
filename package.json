@@ -1,6 +1,6 @@
 {
   "name": "@vforks/get-graphql-from-jsonschema",
-  "version": "8.0.12-2",
+  "version": "8.0.12-3",
   "description": "get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.",
   "contributors": [
     {
