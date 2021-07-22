@@ -17,7 +17,7 @@ const parseSchema = function ({ path, schema, direction, refToTypeName }: {
 
   if ('$gqlType' in schema as any) {
     result = {
-      typeName: (schema as any).gqlType,
+      typeName: (schema as any).$gqlType,
       typeDefinitions: []
     };
   } else if ('$ref' in schema as any) {
