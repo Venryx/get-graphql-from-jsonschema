@@ -21,6 +21,9 @@ const parseUnion = function ({ path, schema, direction, refToTypeName }: {
         graphqlTypeNames: string[] = [];
 
   subSchemas.forEach((subSchema, index): void => {
+    if (subSchema.type as any === 'null') {
+      return;
+    }
     const result = parseSchema({ schema: subSchema, direction, path: [ ...path, `I${index}` ], refToTypeName });
 
     graphqlTypeNames.push(result.typeName);

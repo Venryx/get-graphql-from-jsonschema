@@ -7,6 +7,7 @@ get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.
 > * Added support for "$ref" field in schemas.
 > * Added support for "$gqlType" field in schemas; used for directly overriding the gql type-name inserted for a given schema. (like the $ref support, except without the type-name translation, and with a new/otherwise-ignored key)
 > * Made-so if schema structure isn't recognized, the invalid schema is included in the log message.
+> * Improved handling of `type:null` structures. (eg. made-so `{oneOf: [{...}, {type: "null"}]}` doesn't error)
 
 ## Installation
 
