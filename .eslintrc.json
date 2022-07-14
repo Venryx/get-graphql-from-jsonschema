@@ -1,3 +1,13 @@
 {
-  "extends": "es/node"
+  "extends": "es/node",
+  "rules": {
+    "no-eq-null": "off",
+    "eqeqeq": "off",
+		"unicorn/no-abusive-eslint-disable": "off",
+    //"@typescript-eslint/dot-notation": "off",
+    "capitalized-comments": "off",
+    "line-comment-position": "off",
+    "no-inline-comments": "off",
+    "lines-around-comment": "off",
+  }
 }

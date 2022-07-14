@@ -8,12 +8,24 @@ get-graphql-from-jsonschema gets a GraphQL schema from a JSON schema.
 > * Added support for "$gqlType" field in schemas; used for directly overriding the gql type-name inserted for a given schema. (like the $ref support, except without the type-name translation, and with a new/otherwise-ignored key)
 > * Made-so if schema structure isn't recognized, the invalid schema is included in the log message.
 > * Improved handling of `type:null` structures. (eg. made-so `{oneOf: [{...}, {type: "null"}]}` doesn't error)
+> * Made-so a schema with `{items: {...}}` is treated as being for an array, even if it doesn't have an explicit `{type: "array"}`.
+> * Added basic development/build instructions to readme.
+> * Changed eslint rules to allow:
+>> 1) The generic `// eslint-disable-line`.
+>> 2) The non-strict equals/not-equals.
+>> 3) Loosened rules around comments and such.
 
 ## Installation
 
 ```shell
 $ npm install @vforks/get-graphql-from-jsonschema
 ```
+
+## Development
+
+Steps:
+1) Install dependencies: `npm install`
+2) To build, run: `tsc` (or: `tsc --watch`)
 
 ## Quick Start
 

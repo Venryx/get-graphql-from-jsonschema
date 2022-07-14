@@ -47,6 +47,10 @@ const parseSchema = function ({ path, schema, direction, refToTypeName }: {
     };
   } else if ('type' in schema) {
     result = parseType({ path, schema, direction, refToTypeName });
+  }
+  // if "type" not specified, but schema has "items" prop, interpret schema as being of type "array"
+  else if ((schema as any).items != null) {
+    result = parseType({ path, schema: {...schema, type: "array"} as any, direction, refToTypeName });
   } else if ('oneOf' in schema || 'anyOf' in schema) {
     result = parseUnion({ path, schema, direction, refToTypeName });
   } else {
